@@ -1,8 +1,8 @@
 package me.victor.easy;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
@@ -19,16 +19,14 @@ import java.util.Objects;
 public class T1_TowSum {
 
     public static void main(String[] args) {
+        var obj = new T1_TowSum();
         var nums = new int[]{2, 7, 11, 15};
         var target = 9;
-        var result = new int[]{0, 1};
-        var obj = new T1_TowSum();
-        assert Objects.deepEquals(obj.my(nums, target), result);
-        assert Objects.deepEquals(obj.best(nums, target), result);
-        assert Objects.deepEquals(obj.modified(nums, target), result);
+        System.out.println(Arrays.toString(obj.original(nums, target)));
+        System.out.println(Arrays.toString(obj.official(nums, target)));
     }
 
-    public int[] my(int[] nums, int target) {
+    public int[] original(int[] nums, int target) {
         for (int i = 0; i < nums.length; i++) {
             for (int j = 0; j < nums.length; j++) {
                 if (nums[i] + nums[j] == target) {
@@ -39,7 +37,7 @@ public class T1_TowSum {
         throw new IllegalArgumentException();
     }
 
-    public int[] best(int[] nums, int target) {
+    public int[] official(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             int complement = target - nums[i];
@@ -49,17 +47,5 @@ public class T1_TowSum {
             map.put(nums[i], i);
         }
         throw new IllegalArgumentException("No two sum solution");
-    }
-
-    public int[] modified(int[] nums, int target) {
-        var map = new HashMap<Integer, Integer>();
-        for (int i = 0; i < nums.length; i++) {
-            var r = target - nums[i];
-            if (map.containsKey(r)) {
-                return new int[]{map.get(r), i};
-            }
-            map.put(nums[i], i);
-        }
-        throw new IllegalArgumentException();
     }
 }
