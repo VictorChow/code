@@ -19,14 +19,13 @@ import java.util.Map;
 public class T1_TowSum {
 
     public static void main(String[] args) {
-        var obj = new T1_TowSum();
         var nums = new int[]{2, 7, 11, 15};
         var target = 9;
-        System.out.println(Arrays.toString(obj.original(nums, target)));
-        System.out.println(Arrays.toString(obj.official(nums, target)));
+        System.out.println(Arrays.toString(original(nums, target)));
+        System.out.println(Arrays.toString(official(nums, target)));
     }
 
-    public int[] original(int[] nums, int target) {
+    private static int[] original(int[] nums, int target) {
         for (int i = 0; i < nums.length; i++) {
             for (int j = 0; j < nums.length; j++) {
                 if (nums[i] + nums[j] == target) {
@@ -37,7 +36,7 @@ public class T1_TowSum {
         throw new IllegalArgumentException();
     }
 
-    public int[] official(int[] nums, int target) {
+    private static int[] official(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             int complement = target - nums[i];

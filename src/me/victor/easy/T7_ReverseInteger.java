@@ -2,40 +2,39 @@ package me.victor.easy;
 
 /**
  * 给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。
- *
+ * <p>
  * 示例 1:
- *
+ * <p>
  * 输入: 123
  * 输出: 321
  *  示例 2:
- *
+ * <p>
  * 输入: -123
  * 输出: -321
  * 示例 3:
- *
+ * <p>
  * 输入: 120
  * 输出: 21
  * 注意:
- *
+ * <p>
  * 假设我们的环境只能存储得下 32 位的有符号整数，则其数值范围为 [−231,  231 − 1]。请根据这个假设，如果反转后整数溢出那么就返回 0。
  */
 
 public class T7_ReverseInteger {
 
     public static void main(String[] args) {
-        var obj = new T7_ReverseInteger();
-        System.out.println(obj.original(123));
-        System.out.println(obj.original(-123));
-        System.out.println(obj.original(120));
-        System.out.println(obj.original(1534236469));
+        System.out.println(original(123));
+        System.out.println(original(-123));
+        System.out.println(original(120));
+        System.out.println(original(1534236469));
 
-        System.out.println(obj.official(123));
-        System.out.println(obj.official(-123));
-        System.out.println(obj.official(120));
-        System.out.println(obj.official(1534236469));
+        System.out.println(official(123));
+        System.out.println(official(-123));
+        System.out.println(official(120));
+        System.out.println(official(1534236469));
     }
 
-    public int original(int x) {
+    private static int original(int x) {
         var str = String.valueOf(x);
         var r = 0L;
         int pow = 0, length = str.length();
@@ -51,7 +50,7 @@ public class T7_ReverseInteger {
         return (r > Integer.MAX_VALUE || r < Integer.MIN_VALUE) ? 0 : (int) (b ? -r : r);
     }
 
-    public int official(int x) {
+    private static int official(int x) {
         int rev = 0;
         while (x != 0) {
             int pop = x % 10;

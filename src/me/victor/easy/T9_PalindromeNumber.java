@@ -26,20 +26,19 @@ import java.util.LinkedList;
 public class T9_PalindromeNumber {
 
     public static void main(String[] args) {
-        var obj = new T9_PalindromeNumber();
-        System.out.println(obj.original(121));
-        System.out.println(obj.original(-121));
-        System.out.println(obj.original(10));
-        System.out.println(obj.original(3));
+        System.out.println(original(121));
+        System.out.println(original(-121));
+        System.out.println(original(10));
+        System.out.println(original(3));
 
-        System.out.println(obj.official(121));
-        System.out.println(obj.official(-121));
-        System.out.println(obj.official(10));
-        System.out.println(obj.official(3));
-        System.out.println(obj.official(2112));
+        System.out.println(official(121));
+        System.out.println(official(-121));
+        System.out.println(official(10));
+        System.out.println(official(3));
+        System.out.println(official(2112));
     }
 
-    public boolean original(int x) {
+    private static boolean original(int x) {
         if (x < 0) {
             return false;
         }
@@ -56,7 +55,7 @@ public class T9_PalindromeNumber {
         return true;
     }
 
-    public boolean official(int x) {
+    private static boolean official(int x) {
         // 特殊情况：
         // 如上所述，当 x < 0 时，x 不是回文数。
         // 同样地，如果数字的最后一位是 0，为了使该数字为回文，
