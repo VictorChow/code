@@ -55,6 +55,7 @@ public class T53_MaximumSubarray {
         var max = nums[0];
         var sum = 0;
         for (var num : nums) {
+            // 这个地方不应该直接加, 应该先判断之前的
             sum += num;
             if (sum > 0) {
                 max = Math.max(max, sum);
@@ -67,9 +68,9 @@ public class T53_MaximumSubarray {
     }
 
     /**
-     * 假设sum<=0，那么后面的子序列肯定不包含目前的子序列
-     * 所以令sum = num；如果sum > 0对于后面的子序列是有好处的
-     * res = Math.max(res, sum)保证可以找到最大的子序和。
+     * 假设sum<=0，那么后面的子序列肯定不包含目前的子序列, 所以令sum = num
+     * 如果sum > 0对于后面的子序列是有好处的
+     * max = Math.max(max, sum)保证可以找到最大的子序和。
      */
     private static int best(int[] nums) {
         int max = nums[0];
