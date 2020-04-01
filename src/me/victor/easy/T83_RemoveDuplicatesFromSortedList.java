@@ -62,7 +62,7 @@ public class T83_RemoveDuplicatesFromSortedList {
         return head;
     }
 
-    public static class ListNode {
+    private static class ListNode {
         int val;
         ListNode next;
 

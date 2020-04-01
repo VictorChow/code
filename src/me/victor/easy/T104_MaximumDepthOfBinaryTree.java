@@ -28,6 +28,7 @@ public class T104_MaximumDepthOfBinaryTree {
         node.right.right = new TreeNode(7);
 
         System.out.println(original(node));
+        System.out.println(modified(node));
     }
 
     private static int original(TreeNode root) {
@@ -38,7 +39,12 @@ public class T104_MaximumDepthOfBinaryTree {
         return root == null ? depth : Math.max(check(root.left, depth + 1), check(root.right, depth + 1));
     }
 
-    public static class TreeNode {
+    private static int modified(TreeNode root) {
+        if (root == null) return 0;
+        return Math.max(modified(root.left), modified(root.right)) + 1;
+    }
+
+    private static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;

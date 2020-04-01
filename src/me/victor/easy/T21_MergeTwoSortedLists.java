@@ -82,7 +82,7 @@ public class T21_MergeTwoSortedLists {
         }
     }
 
-    public static class ListNode {
+    private static class ListNode {
         int val;
         ListNode next;
 

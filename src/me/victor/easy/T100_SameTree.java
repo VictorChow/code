@@ -42,7 +42,7 @@ public class T100_SameTree {
         return p.val == q.val && original(p.left, q.left) && original(p.right, q.right);
     }
 
-    public static class TreeNode {
+    private static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;

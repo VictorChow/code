@@ -53,7 +53,7 @@ public class T101_SymmetricTree {
         return left.val == right.val && check(left.left, right.right) && check(left.right, right.left);
     }
 
-    public static class TreeNode {
+    private static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
