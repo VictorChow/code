@@ -27,7 +27,7 @@ public class T108_ConvertSortedArrayToBinarySearchTree {
     }
 
     private static TreeNode buildNode(int[] nums, int start, int end) {
-        if (start < end) return null;
+        if (start > end) return null;
         var mid = start + ((end - start) >> 1);
         var root = new TreeNode(nums[mid]);
         root.left = buildNode(nums, start, mid - 1);
