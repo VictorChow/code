@@ -1,6 +1,7 @@
 package me.victor.easy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -21,6 +22,10 @@ public class T119_PascalTriangle2 {
         System.out.println(original(1));
         System.out.println(original(2));
         System.out.println(original(20));
+        System.out.println(better(0));
+        System.out.println(better(1));
+        System.out.println(better(2));
+        System.out.println(better(20));
     }
 
     private static List<Integer> original(int rowIndex) {
@@ -40,4 +45,13 @@ public class T119_PascalTriangle2 {
         return all.get(rowIndex);
     }
 
+    private static List<Integer> better(int rowIndex) {
+        var arr = new Integer[rowIndex + 1];
+        Arrays.fill(arr, 1);
+        for (int i = 2; i < arr.length; i++) {
+            for (int j = i - 1; j > 0; j--)
+                arr[j] = arr[j] + arr[j - 1];
+        }
+        return Arrays.asList(arr);
+    }
 }
