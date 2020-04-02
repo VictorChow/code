@@ -37,8 +37,7 @@ public class T100_SameTree {
 
     private static boolean original(TreeNode p, TreeNode q) {
         if (p == null && q == null) return true;
-        else if (p != null && q == null) return false;
-        else if (p == null) return false;
+        if (p == null || q == null) return false;
         return p.val == q.val && original(p.left, q.left) && original(p.right, q.right);
     }
 
