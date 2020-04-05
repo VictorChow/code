@@ -31,13 +31,21 @@ public class T70_ClimbingStairs {
     public static void main(String[] args) {
         System.out.println(original(2));
         System.out.println(original(3));
+        System.out.println(original(5));
         System.out.println(original(20));
         System.out.println(original(43));
-
+        System.out.println("------------");
         System.out.println(original2(2));
         System.out.println(original2(3));
+        System.out.println(original2(5));
         System.out.println(original2(20));
         System.out.println(original2(43));
+        System.out.println("------------");
+        System.out.println(best(2));
+        System.out.println(best(3));
+        System.out.println(best(5));
+        System.out.println(best(20));
+        System.out.println(best(43));
     }
 
     private static int original(int n) {
@@ -72,9 +80,15 @@ public class T70_ClimbingStairs {
         return r;
     }
 
-    //    private static int original(int n) {
-    //        if (n < 0) return 0;
-    //        else if (n == 0) return 1;
-    //        return original(n - 1) + original(n - 2);
-    //    }
+    private static int best(int n) {
+        if (n == 1) return 1;
+        else if (n == 2) return 2;
+        int p1 = 1, p2 = 2;
+        for (int i = 3; i < n; i++) {
+            var tmp = p2;
+            p2 = p1 + p2;
+            p1 = tmp;
+        }
+        return p1 + p2;
+    }
 }
