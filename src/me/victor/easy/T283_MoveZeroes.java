@@ -20,13 +20,15 @@ public class T283_MoveZeroes {
         var nums = new int[]{0, 1, 0, 3, 12};
         System.out.println(Arrays.toString(nums));
         //        original(nums);
-        modified(nums);
+        //        modified(nums);
+        official(nums);
         System.out.println(Arrays.toString(nums));
 
         var nums2 = new int[]{0, 0, 1};
         System.out.println(Arrays.toString(nums2));
         //        original(nums2);
-        modified(nums2);
+        //        modified(nums2);
+        official(nums2);
         System.out.println(Arrays.toString(nums2));
     }
 
@@ -60,6 +62,14 @@ public class T283_MoveZeroes {
     }
 
     private static void official(int[] nums) {
-
+        for (int index = 0, zeroIndex = 0; index < nums.length; index++) {
+            if (nums[index] != 0) {
+                nums[index] ^= nums[zeroIndex];
+                nums[zeroIndex] ^= nums[index];
+                nums[index] ^= nums[zeroIndex];
+                zeroIndex++;
+            }
+        }
     }
+
 }
