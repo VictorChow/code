@@ -1,7 +1,6 @@
 package me.victor.easy;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -27,14 +26,6 @@ public class T401_BinaryWatch {
 
     public static void main(String[] args) {
         System.out.println(original(2));
-
-        System.out.println("-------------");
-        var list1 = new ArrayList<>(List.of("0:48", "0:40", "0:36", "0:34", "0:33", "0:24", "0:20", "0:18", "0:17", "0:12", "0:10", "0:09", "0:06", "0:05", "0:03", "8:32", "8:16", "8:08", "8:04", "8:02", "8:01", "4:32", "4:16", "4:08", "4:04", "4:02", "4:01", "2:32", "2:16", "2:08", "2:04", "2:02", "2:01", "1:32", "1:16", "1:08", "1:04", "1:02", "1:01", "12:00", "10:00", "9:00", "6:00", "5:00", "3:00"));
-        var list2 = new ArrayList<>(List.of("0:03", "0:05", "0:06", "0:09", "0:10", "0:12", "0:17", "0:18", "0:20", "0:24", "0:33", "0:34", "0:36", "0:40", "0:48", "1:01", "1:02", "1:04", "1:08", "1:16", "1:32", "2:01", "2:02", "2:04", "2:08", "2:16", "2:32", "3:00", "4:01", "4:02", "4:04", "4:08", "4:16", "4:32", "5:00", "6:00", "8:01", "8:02", "8:04", "8:08", "8:16", "8:32", "9:00", "10:00"));
-        list1.sort(Comparator.naturalOrder());
-        list2.sort(Comparator.naturalOrder());
-        System.out.println(list1);
-        System.out.println(list2);
     }
 
 
@@ -49,9 +40,6 @@ public class T401_BinaryWatch {
             }
             var hours = hour(tmp);
             var minutes = minute(num - tmp);
-            //            System.out.println("------");
-            //            System.out.println(hours);
-            //            System.out.println(minutes);
             for (var hour : hours) {
                 for (var minute : minutes) {
                     list.add(String.format("%d:%02d", hour, minute));
