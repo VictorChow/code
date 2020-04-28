@@ -43,12 +43,12 @@ public class T437_PathSum3 {
         node.left.left = new TreeNode(-1);
         node.left.right = new TreeNode(3);
         node.left.left.left = new TreeNode(-1);
-        System.out.println(pathSum(node, 3));
+        System.out.println(original(node, 3));
     }
 
-    private static int pathSum(TreeNode root, int sum) {
+    private static int original(TreeNode root, int sum) {
         if (root == null) return 0;
-        return find(root, sum) + pathSum(root.left, sum) + pathSum(root.right, sum);
+        return find(root, sum) + original(root.left, sum) + original(root.right, sum);
     }
 
     private static int find(TreeNode node, int sum) {
@@ -56,17 +56,6 @@ public class T437_PathSum3 {
         sum -= node.val;
         var r = sum == 0 ? 1 : 0;
         return r + find(node.left, sum) + find(node.right, sum);
-    }
-
-    private static void find(TreeNode node, int targetSum, int[] num, int rootSum, boolean asRoot) {
-        if (node == null) return;
-        if (rootSum + node.val == targetSum) num[0]++;
-        if (!asRoot) {
-            find(node.left, targetSum, num, rootSum + node.val, false);
-            find(node.right, targetSum, num, rootSum + node.val, false);
-        }
-        find(node.left, targetSum, num, 0, true);
-        find(node.right, targetSum, num, 0, true);
     }
 
     private static class TreeNode {
