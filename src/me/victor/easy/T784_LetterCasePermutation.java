@@ -28,29 +28,24 @@ public class T784_LetterCasePermutation {
     }
 
     private static List<String> original(String S) {
-        var list = new ArrayList<String>();
-        handle(S.toCharArray(), 0, list);
-        return list;
-    }
+        List<StringBuilder> ans = new ArrayList<>();
+        ans.add(new StringBuilder());
 
-    private static void handle(char[] arr, int index, List<String> list) {
-        System.out.println("111");
-        if (index >= arr.length) {
-            var str = String.valueOf(arr);
-            if (!list.contains(str)) {
-                list.add(str);
-            }
-            return;
-        }
-        for (int i = 0; i < arr.length; i++) {
-            var isDigit = arr[i] >= '0' && arr[i] <= '9';
-            if (!isDigit) {
-                arr[i] ^= ' ';
-            }
-            handle(arr, index + 1, list);
-            if (!isDigit) {
-                arr[i] ^= ' ';
+        for (char c : S.toCharArray()) {
+            int n = ans.size();
+            if (Character.isLetter(c)) {
+                for (int i = 0; i < n; ++i) {
+                    ans.add(new StringBuilder(ans.get(i)));
+                    ans.get(i).append(Character.toLowerCase(c));
+                    ans.get(n + i).append(Character.toUpperCase(c));
+                }
+            } else {
+                for (StringBuilder an : ans) an.append(c);
             }
         }
+        List<String> finalans = new ArrayList<>();
+        for (StringBuilder sb : ans)
+            finalans.add(sb.toString());
+        return finalans;
     }
 }
