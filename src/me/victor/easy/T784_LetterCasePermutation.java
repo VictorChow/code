@@ -1,6 +1,7 @@
 package me.victor.easy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -24,7 +25,10 @@ import java.util.List;
 public class T784_LetterCasePermutation {
 
     public static void main(String[] args) {
-        System.out.println(original("A1D"));
+        //        System.out.println(original("A1D"));
+
+        System.out.println(Arrays.toString("a,b".split(",")));
+        System.out.println(Arrays.toString("a".split(",")));
     }
 
     private static List<String> original(String S) {
