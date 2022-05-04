@@ -1,5 +1,8 @@
 package me.victor.easy;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 /**
  * 两个整数之间的汉明距离指的是这两个数字对应二进制位不同的位置的数目。
  * 给出两个整数 x 和 y，计算它们之间的汉明距离。
@@ -18,9 +21,20 @@ package me.victor.easy;
 
 public class T461_HammingDistance {
 
-    public static void main(String[] args) {
-        System.out.println(original(1, 4));
-        System.out.println(official(1, 4));
+    public static void main(String args[]) throws UnknownHostException {
+
+        InetAddress addr = InetAddress.getLocalHost();
+
+        //Getting IPAddress of localhost - getHostAddress return IP Address
+        // in textual format
+        String ipAddress = addr.getHostAddress();
+
+        System.out.println("IP address of localhost from Java Program: " + ipAddress);
+
+        //Hostname
+        String hostname = addr.getHostName();
+        System.out.println("Name of hostname : " + hostname);
+
     }
 
     private static int original(int x, int y) {
@@ -36,4 +50,6 @@ public class T461_HammingDistance {
     private static int official(int x, int y) {
         return Integer.bitCount(x ^ y);
     }
+
+
 }
