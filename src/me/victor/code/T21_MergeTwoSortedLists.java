@@ -1,11 +1,7 @@
 package me.victor.code;
 
 /**
- * 将两个升序链表合并为一个新的升序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
- *
- * 示例：
- * 输入：1->2->4, 1->3->4
- * 输出：1->1->2->3->4->4
+ * https://leetcode.cn/problems/merge-two-sorted-lists/
  */
 
 public class T21_MergeTwoSortedLists {
@@ -14,24 +10,28 @@ public class T21_MergeTwoSortedLists {
         var node2 = node2();
         System.out.println("node1: " + node1);
         System.out.println("node2: " + node2);
-        System.out.println(original(node1, node2));
+//        System.out.println(original(node1, node2));
+
+        var t = new T21_MergeTwoSortedLists();
+
+        System.out.println(t.mergeTwoLists(node1, node2));
     }
 
     private static ListNode node1() {
         var node = new ListNode(2);
-        //                node.next = new ListNode(2);
-        //                node.next.next = new ListNode(4);
-        //        node.next.next.next = new ListNode(5);
-        //        node.next.next.next.next = new ListNode(8);
+        node.next = new ListNode(2);
+        node.next.next = new ListNode(4);
+        node.next.next.next = new ListNode(5);
+        node.next.next.next.next = new ListNode(8);
         return node;
     }
 
     private static ListNode node2() {
         var node = new ListNode(1);
-        //        node.next = new ListNode(3);
-        //        node.next.next = new ListNode(4);
-        //        node.next.next.next = new ListNode(5);
-        //        node.next.next.next.next = new ListNode(8);
+        node.next = new ListNode(3);
+        node.next.next = new ListNode(4);
+        node.next.next.next = new ListNode(5);
+        node.next.next.next.next = new ListNode(8);
         return node;
     }
 
@@ -82,15 +82,29 @@ public class T21_MergeTwoSortedLists {
         }
     }
 
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        if (list1 == null) return list2;
+        if (list2 == null) return list1;
+        if (list1.val < list2.val) {
+            list1.next = mergeTwoLists(list1.next, list2);
+            return list1;
+        } else {
+            list2.next = mergeTwoLists(list1, list2.next);
+            return list2;
+        }
+    }
+
     private static class ListNode {
         int val;
         ListNode next;
 
-        ListNode(int x) { val = x; }
+        ListNode() {}
+
+        ListNode(int x) {val = x;}
 
         @Override
         public String toString() {
-            return val + (next == null ? "" : "->" + next.toString());
+            return val + (next == null ? "" : "->" + next);
         }
     }
 
