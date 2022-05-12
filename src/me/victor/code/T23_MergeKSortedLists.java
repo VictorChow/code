@@ -6,20 +6,18 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
+import me.victor.code.util.ListNode;
+import me.victor.code.util.Util;
+
 /**
  * https://leetcode.cn/problems/merge-k-sorted-lists/
  */
 class T23_MergeKSortedLists {
     public static void main(String[] args) {
         var t = new T23_MergeKSortedLists();
-        var node1 = new ListNode(1);
-        node1.next = new ListNode(4);
-        node1.next.next = new ListNode(5);
-        var node2 = new ListNode(1);
-        node2.next = new ListNode(3);
-        node2.next.next = new ListNode(4);
-        var node3 = new ListNode(2);
-        node3.next = new ListNode(6);
+        var node1 = Util.nodes(1, 4, 5);
+        var node2 = Util.nodes(1, 3, 4);
+        var node3 = Util.nodes(2, 6);
 
         System.out.println(node1);
         System.out.println(node2);
@@ -39,19 +37,5 @@ class T23_MergeKSortedLists {
         list.set(list.indexOf(node), node.next);
         node.next = merge(list);
         return node;
-    }
-
-    private static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {}
-
-        ListNode(int x) {val = x;}
-
-        @Override
-        public String toString() {
-            return val + (next == null ? "" : "->" + next);
-        }
     }
 }

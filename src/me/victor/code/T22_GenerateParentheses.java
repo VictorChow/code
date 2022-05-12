@@ -2,7 +2,6 @@ package me.victor.code;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.TreeSet;
 
 /**
@@ -34,16 +33,4 @@ class T22_GenerateParentheses {
             dfs(list, s + ")", left, right + 1, n);
         }
     }
-
-    //    private Set<String> generate(int n) {
-    //        if (n == 1) return Collections.singleton("()");
-    //        var set = new HashSet<String>();
-    //        var preSet = generate(n - 1);
-    //        for (String s : preSet) {
-    //            set.add("()" + s);
-    //            set.add("(" + s + ")");
-    //            set.add(s + "()");
-    //        }
-    //        return set;
-    //    }
 }

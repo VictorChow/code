@@ -12,4 +12,12 @@ public class Util {
         }
         return node.next;
     }
+
+    public static int[] intArray(int... ints) {
+        return ints;
+    }
+
+    public static String[] strArray(String... strings) {
+        return strings;
+    }
 }

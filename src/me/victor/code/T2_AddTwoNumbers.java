@@ -1,5 +1,7 @@
 package me.victor.code;
 
+import me.victor.code.util.ListNode;
+
 /**
  * https://leetcode.cn/problems/add-two-numbers/
  */
@@ -29,24 +31,5 @@ public class T2_AddTwoNumbers {
             l2 = l2 == null ? null : l2.next;
         }
         return root;
-    }
-
-    private static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {}
-
-        ListNode(int val) {this.val = val;}
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-
-        @Override
-        public String toString() {
-            return val + " " + ((next == null) ? "" : next.toString());
-        }
     }
 }

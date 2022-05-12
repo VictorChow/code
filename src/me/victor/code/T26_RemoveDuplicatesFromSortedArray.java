@@ -1,31 +1,22 @@
 package me.victor.code;
 
-import java.util.Arrays;
+import me.victor.code.util.Util;
 
 /**
- * 给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
- * 不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。
- *
- * 示例 1:
- * 给定数组 nums = [1,1,2],
- * 函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。
- * 你不需要考虑数组中超出新长度后面的元素。
- *
- * 示例 2:
- * 给定 nums = [0,0,1,1,1,2,2,3,3,4],
- * 函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。
- * 你不需要考虑数组中超出新长度后面的元素。
+ * https://leetcode.cn/problems/remove-duplicates-from-sorted-array/
  */
 
 public class T26_RemoveDuplicatesFromSortedArray {
 
+
     public static void main(String[] args) {
-        var arr1 = new int[]{1, 1, 2};
-        var arr2 = new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
-        System.out.println(original(arr1));
-        System.out.println(Arrays.toString(arr1));
-        System.out.println(original(arr2));
-        System.out.println(Arrays.toString(arr2));
+        var t = new T26_RemoveDuplicatesFromSortedArray();
+        //        var arr1 = new int[]{1, 1, 2};
+        //        var arr2 = new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        System.out.println(original(Util.intArray(1, 2, 2)));
+        System.out.println(t.removeDuplicates(Util.intArray(1, 2, 2)));
+        System.out.println(original(Util.intArray(0, 0, 1, 1, 1, 2, 2, 3, 3, 4)));
+        System.out.println(t.removeDuplicates(Util.intArray(0, 0, 1, 1, 1, 2, 2, 3, 3, 4)));
     }
 
     private static int original(int[] nums) {
@@ -50,5 +41,16 @@ public class T26_RemoveDuplicatesFromSortedArray {
             }
         }
         return i + 1;
+    }
+
+    public int removeDuplicates(int[] nums) {
+        int l = 0, r = 0;
+        while (r < nums.length) {
+            if (nums[r] != nums[l]) {
+                nums[++l] = nums[r];
+            }
+            r++;
+        }
+        return ++l;
     }
 }
