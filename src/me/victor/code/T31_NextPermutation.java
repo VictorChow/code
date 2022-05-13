@@ -29,26 +29,28 @@ class T31_NextPermutation {
             if (nums[i - 1] < nums[i]) {
                 var smallerIdx = findMinSmallerIdx(nums, nums[i - 1], i);
                 swap(nums, smallerIdx, i - 1);
-                Arrays.sort(nums, i, nums.length);
+                reverse(nums, i, nums.length);
                 System.out.println(Arrays.toString(nums));
+                System.out.println("-----");
                 return;
             }
         }
-        for (int i = 0; i < nums.length / 2; i++) {
-            var j = nums.length - 1 - i;
-            swap(nums, i, j);
-        }
+        reverse(nums, 0, nums.length);
         System.out.println(Arrays.toString(nums));
+        System.out.println("-----");
+    }
+
+    private void reverse(int[] nums, int l, int r) {
+        for (int i = l; i < l + (r - l) / 2; i++) {
+            swap(nums, i, r - (i - l) - 1);
+        }
     }
 
     private int findMinSmallerIdx(int[] nums, int cur, int l) {
-        int val = Integer.MAX_VALUE, idx = l;
-        for (int i = l; i < nums.length; i++) {
-            if (nums[i] > cur && nums[i] < val) {
-                idx = i;
-            }
+        for (int i = nums.length - 1; i >= l; i--) {
+            if (nums[i] > cur) return i;
         }
-        return idx;
+        throw new IllegalArgumentException();
     }
 
     public void nextPermutation2(int[] nums) {
