@@ -12,12 +12,12 @@ public class T27_RemoveElement {
 
     public static void main(String[] args) {
         var t = new T27_RemoveElement();
-        var arr1 = Util.intArray(3, 2, 2, 3);
+        var arr1 = Util.intArr(3, 2, 2, 3);
         System.out.println(Arrays.toString(arr1));
         System.out.println(t.removeElement(arr1, 3));
         //        System.out.println(original(arr1, 3));
         System.out.println(Arrays.toString(arr1));
-        var arr2 = Util.intArray(0, 1, 2, 2, 3, 0, 4, 2);
+        var arr2 = Util.intArr(0, 1, 2, 2, 3, 0, 4, 2);
         System.out.println(Arrays.toString(arr2));
         //        System.out.println(original(arr2, 2));
         System.out.println(t.removeElement(arr2, 2));
