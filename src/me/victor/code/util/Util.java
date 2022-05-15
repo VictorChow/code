@@ -13,11 +13,11 @@ public class Util {
         return node.next;
     }
 
-    public static int[] intArr(int... ints) {
+    public static int[] arr(int... ints) {
         return ints;
     }
 
-    public static String[] strArr(String... strings) {
+    public static String[] arr(String... strings) {
         return strings;
     }
 }

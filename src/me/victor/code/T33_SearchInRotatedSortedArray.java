@@ -10,7 +10,7 @@ class T33_SearchInRotatedSortedArray {
     public static void main(String[] args) {
         var t = new T33_SearchInRotatedSortedArray();
         //        System.out.println(t.search(Util.intArr(4, 5, 6, 7, 0, 1, 2), 0));
-        System.out.println(t.search(Util.intArr(4, 5, 6, 7, 0, 1, 2), 1));
+        System.out.println(t.search(Util.arr(4, 5, 6, 7, 0, 1, 2), 1));
         //        System.out.println(t.search(Util.intArr(1), 0));
     }
 

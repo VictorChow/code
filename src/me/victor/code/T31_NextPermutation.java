@@ -12,14 +12,14 @@ class T31_NextPermutation {
     public static void main(String[] args) {
         var t = new T31_NextPermutation();
 
-        t.nextPermutation(Util.intArr(1));
-        t.nextPermutation(Util.intArr(2, 1));
-        t.nextPermutation(Util.intArr(1, 2, 3));
-        t.nextPermutation(Util.intArr(3, 2, 1));
-        t.nextPermutation(Util.intArr(1, 1, 5));
-        t.nextPermutation(Util.intArr(1, 1, 1, 2, 2, 3, 4, 1, 5, 2, 2, 2, 2, 2));
-        t.nextPermutation(Util.intArr(2, 6, 5, 3, 3, 1));
-        t.nextPermutation(Util.intArr(4, 2, 0, 2, 3, 2, 0));
+        t.nextPermutation(Util.arr(1));
+        t.nextPermutation(Util.arr(2, 1));
+        t.nextPermutation(Util.arr(1, 2, 3));
+        t.nextPermutation(Util.arr(3, 2, 1));
+        t.nextPermutation(Util.arr(1, 1, 5));
+        t.nextPermutation(Util.arr(1, 1, 1, 2, 2, 3, 4, 1, 5, 2, 2, 2, 2, 2));
+        t.nextPermutation(Util.arr(2, 6, 5, 3, 3, 1));
+        t.nextPermutation(Util.arr(4, 2, 0, 2, 3, 2, 0));
     }
 
     public void nextPermutation(int[] nums) {

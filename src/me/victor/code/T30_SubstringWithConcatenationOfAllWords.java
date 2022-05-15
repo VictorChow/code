@@ -13,10 +13,10 @@ public class T30_SubstringWithConcatenationOfAllWords {
 
     public static void main(String[] args) {
         var t = new T30_SubstringWithConcatenationOfAllWords();
-        System.out.println(t.findSubstring("barfoothefoobarman", Util.strArr("foo", "bar")));
-        System.out.println(t.findSubstring("wordgoodgoodgoodbestword", Util.strArr("word", "good", "best", "word")));
-        System.out.println(t.findSubstring("barfoofoobarthefoobarman", Util.strArr("bar", "foo", "the")));
-        System.out.println(t.findSubstring("wordgoodgoodgoodbestword", Util.strArr("word", "good", "best", "good")));
+        System.out.println(t.findSubstring("barfoothefoobarman", Util.arr("foo", "bar")));
+        System.out.println(t.findSubstring("wordgoodgoodgoodbestword", Util.arr("word", "good", "best", "word")));
+        System.out.println(t.findSubstring("barfoofoobarthefoobarman", Util.arr("bar", "foo", "the")));
+        System.out.println(t.findSubstring("wordgoodgoodgoodbestword", Util.arr("word", "good", "best", "good")));
 
     }
 

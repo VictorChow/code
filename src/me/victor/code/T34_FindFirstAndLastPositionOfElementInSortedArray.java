@@ -11,7 +11,7 @@ class T34_FindFirstAndLastPositionOfElementInSortedArray {
 
     public static void main(String[] args) {
         var t = new T34_FindFirstAndLastPositionOfElementInSortedArray();
-        System.out.println(Arrays.toString(t.searchRange(Util.intArr(5, 7, 7, 8, 9, 10), 8)));
+        System.out.println(Arrays.toString(t.searchRange(Util.arr(5, 7, 7, 8, 9, 10), 8)));
     }
 
     public int[] searchRange(int[] nums, int target) {

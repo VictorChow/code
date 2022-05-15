@@ -13,10 +13,10 @@ public class T26_RemoveDuplicatesFromSortedArray {
         var t = new T26_RemoveDuplicatesFromSortedArray();
         //        var arr1 = new int[]{1, 1, 2};
         //        var arr2 = new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
-        System.out.println(original(Util.intArr(1, 2, 2)));
-        System.out.println(t.removeDuplicates(Util.intArr(1, 2, 2)));
-        System.out.println(original(Util.intArr(0, 0, 1, 1, 1, 2, 2, 3, 3, 4)));
-        System.out.println(t.removeDuplicates(Util.intArr(0, 0, 1, 1, 1, 2, 2, 3, 3, 4)));
+        System.out.println(original(Util.arr(1, 2, 2)));
+        System.out.println(t.removeDuplicates(Util.arr(1, 2, 2)));
+        System.out.println(original(Util.arr(0, 0, 1, 1, 1, 2, 2, 3, 3, 4)));
+        System.out.println(t.removeDuplicates(Util.arr(0, 0, 1, 1, 1, 2, 2, 3, 3, 4)));
     }
 
     private static int original(int[] nums) {
