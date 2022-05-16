@@ -23,13 +23,13 @@ class T40_CombinationSum2 {
 
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         Arrays.sort(candidates);
-        var set = new HashSet<List<Integer>>();
+        var lists = new ArrayList<List<Integer>>() {};
         var list = new ArrayList<Integer>();
-        find(candidates, target, 0, list, set, 0);
-        return set.stream().toList();
+        find(candidates, target, 0, list, lists, 0);
+        return lists;
     }
 
-    private void find(int[] candidates, int target, int sum, List<Integer> list, Set<List<Integer>> lists, int l) {
+    private void find(int[] candidates, int target, int sum, List<Integer> list, List<List<Integer>> lists, int l) {
         if (sum > target) return;
         if (sum == target) {
             lists.add(new ArrayList<>(list));
