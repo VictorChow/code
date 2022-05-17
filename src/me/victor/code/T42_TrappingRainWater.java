@@ -1,24 +1,14 @@
 package me.victor.code;
 
+import java.util.Arrays;
+
+import me.victor.code.util.Util;
+
 /**
- * 给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
- * https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/22/rainwatertrap.png
- *
- * 上面是由数组 [0,1,0,2,1,0,1,3,2,1,2,1] 表示的高度图，在这种情况下，可以接 6 个单位的雨水（蓝色部分表示雨水）。 感谢 Marcos 贡献此图。
- *
- * 示例:
- * 输入: [0,1,0,2,1,0,1,3,2,1,2,1]
- * 输出: 6
+ * https://leetcode.cn/problems/trapping-rain-water/
  */
 
 public class T42_TrappingRainWater {
-
-    public static void main(String[] args) {
-        System.out.println(original(new int[]{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1}));
-        System.out.println(original(new int[]{0, 1, 0, 2, 1, 0, 1, 3, 0, 1, 2, 1}));
-        System.out.println(original(new int[]{3, 0, 2}));
-        System.out.println(original(new int[]{5, 4, 1, 2}));
-    }
 
     private static int original(int[] height) {
         if (height.length < 3) return 0;
@@ -58,5 +48,80 @@ public class T42_TrappingRainWater {
             }
         }
         return index;
+    }
+
+
+    public static void main(String[] args) {
+        System.out.println(original(Util.arr(0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1)));
+        System.out.println(original(Util.arr(0, 1, 0, 2, 1, 0, 1, 3, 0, 1, 2, 1)));
+        System.out.println(original(Util.arr(3, 0, 2)));
+        System.out.println(original(Util.arr(5, 4, 1, 2)));
+
+        var t = new T42_TrappingRainWater();
+        System.out.println(t.trap(Util.arr(0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1)));
+        System.out.println(t.trap(Util.arr(0, 1, 0, 2, 1, 0, 1, 3, 0, 1, 2, 1)));
+        System.out.println(t.trap(Util.arr(3, 0, 2)));
+        System.out.println(t.trap(Util.arr(5, 4, 1, 2)));
+    }
+
+    public int trap(int[] height) {
+        var maxLeft = new int[height.length];
+        for (int i = 1; i < height.length; i++) {
+            maxLeft[i] = Math.max(maxLeft[i - 1], height[i - 1]);
+        }
+        var maxRight = new int[height.length];
+        for (int i = height.length - 2; i >= 0; i--) {
+            maxRight[i] = Math.max(maxRight[i + 1], height[i + 1]);
+        }
+        var sum = 0;
+        for (int i = 0; i < height.length; i++) {
+            var v = height[i];
+            var lMax = maxLeft[i];
+            var rMax = maxRight[i];
+            var low = Math.min(lMax, rMax);
+            if (low > v) sum += low - v;
+        }
+        return sum;
+    }
+
+    public int trap3(int[] height) {
+        var sum = 0;
+        for (int i = 0; i < height.length; i++) {
+            var v = height[i];
+            var lMax = getMax(height, 0, i - 1);
+            var rMax = getMax(height, i + 1, height.length - 1);
+            var low = Math.min(lMax, rMax);
+            if (low > v) sum += low - v;
+        }
+        return sum;
+    }
+
+    private int getMax(int[] height, int l, int r) {
+        if (l > r) return Integer.MIN_VALUE;
+        var max = height[l];
+        for (int i = l + 1; i <= r; i++) {
+            if (height[i] > max) max = height[i];
+        }
+        return max;
+    }
+
+    public int trap2(int[] height) {
+        int sum = 0, max = Arrays.stream(height).max().getAsInt();
+        for (int i = 1; i <= max; i++) {
+            int tmp = 0;
+            var b = false;
+            for (int k : height) {
+                if (k < i) {
+                    if (b) tmp++;
+                } else {
+                    if (!b) b = true;
+                    else {
+                        sum += tmp;
+                        tmp = 0;
+                    }
+                }
+            }
+        }
+        return sum;
     }
 }
