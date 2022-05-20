@@ -3,8 +3,6 @@ package me.victor.code;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.victor.code.util.Util;
-
 /**
  * https://leetcode.cn/problems/spiral-matrix/
  */
@@ -13,9 +11,9 @@ class T54_SpiralMatrix {
     public static void main(String[] args) {
         var t = new T54_SpiralMatrix();
         var matrix = new int[][]{
-                Util.arr(1, 2, 3, 4),
-                Util.arr(10, 11, 12, 5),
-                Util.arr(9, 8, 7, 6),
+                {1, 2, 3, 4},
+                {10, 11, 12, 5},
+                {9, 8, 7, 6}
         };
         System.out.println(t.spiralOrder(matrix));
     }
