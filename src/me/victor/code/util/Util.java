@@ -1,5 +1,7 @@
 package me.victor.code.util;
 
+import java.util.Arrays;
+
 public class Util {
 
     public static ListNode nodes(int... nodes) {
@@ -19,5 +21,11 @@ public class Util {
 
     public static String[] arr(String... strings) {
         return strings;
+    }
+
+    public static void print(int[][] arr) {
+        for (int[] it : arr) {
+            System.out.println(Arrays.toString(it));
+        }
     }
 }
