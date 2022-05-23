@@ -3,18 +3,8 @@ package me.victor.code;
 import java.math.BigInteger;
 
 /**
- * 给定两个二进制字符串，返回他们的和（用二进制表示）。
- * 输入为非空字符串且只包含数字 1 和 0。
- *
- * 示例 1:
- * 输入: a = "11", b = "1"
- * 输出: "100"
- *
- * 示例 2:
- * 输入: a = "1010", b = "1011"
- * 输出: "10101"
+ * https://leetcode.cn/problems/add-binary/
  */
-
 public class T67_AddBinary {
 
     public static void main(String[] args) {
@@ -22,6 +12,12 @@ public class T67_AddBinary {
         System.out.println(original("1010", "1011")); //10101
         System.out.println(official("11", "1")); //100
         System.out.println(official("1010", "1011")); //10101
+        System.out.println("~~");
+        var t = new T67_AddBinary();
+        System.out.println(t.addBinary("11", "1")); //100
+        System.out.println(t.addBinary("1010", "1011")); //10101
+        System.out.println(t.addBinary("11", "1")); //100
+        System.out.println(t.addBinary("1010", "1011")); //10101
     }
 
     private static String original(String a, String b) {
@@ -71,5 +67,29 @@ public class T67_AddBinary {
         if (isOver) arr[index] = (byte) (arr[index] - ('1' + '1') + '0');
         else arr[index] = (byte) (arr[index] - '0');
         return plus(arr, index - 1, isOver);
+    }
+
+    public String addBinary(String a, String b) {
+        char[] as = a.toCharArray(), bs = b.toCharArray();
+        int max = Math.max(a.length(), b.length());
+        var res = new int[max];
+        int ia = as.length - 1, ib = bs.length - 1, ir = res.length - 1;
+        while (true) {
+            int va = 0, vb = 0;
+            if (ia >= 0) va = as[ia--] - '0';
+            if (ib >= 0) vb = bs[ib--] - '0';
+            res[ir--] = va + vb;
+            if (ir < 0) break;
+        }
+        var in = 0;
+        for (int i = res.length - 1; i >= 0; i--) {
+            res[i] += in;
+            in = res[i] / 2;
+            res[i] %= 2;
+        }
+        var sb = new StringBuilder();
+        if (in != 0) sb.append(in);
+        for (int i : res) sb.append(i);
+        return sb.toString();
     }
 }
