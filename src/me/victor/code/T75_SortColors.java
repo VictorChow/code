@@ -21,6 +21,22 @@ public class T75_SortColors {
     }
 
     public void sortColors(int[] nums) {
+        int num0 = 0, num1 = 0, num2 = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 0) {
+                nums[num2++] = 2;
+                nums[num1++] = 1;
+                nums[num0++] = 0;
+            } else if (nums[i] == 1) {
+                nums[num2++] = 2;
+                nums[num1++] = 1;
+            } else {
+                nums[num2++] = 2;
+            }
+        }
+    }
+
+    public void sortColors2(int[] nums) {
         int i = 0, l = 0, r = nums.length - 1;
         while (i <= r) {
             var val = nums[i];
