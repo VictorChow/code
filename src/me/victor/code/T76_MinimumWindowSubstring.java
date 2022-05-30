@@ -9,7 +9,7 @@ public class T76_MinimumWindowSubstring {
 
     public static void main(String[] args) {
         var t = new T76_MinimumWindowSubstring();
-        System.out.println(t.minWindow("ADOBECODEBANC", "ABC"));
+        //        System.out.println(t.minWindow("ADOBECODEBANC", "ABC"));
         System.out.println(t.minWindow("a", "a"));
         System.out.println(t.minWindow("a", "aa"));
         System.out.println(t.minWindow("ab", "a"));
@@ -22,38 +22,25 @@ public class T76_MinimumWindowSubstring {
     }
 
     public String minWindow(String s, String t) {
-        if (s.length() < t.length()) return "";
-        var arr = new int['z' - 'A'];
-        Arrays.fill(arr, Integer.MIN_VALUE);
-        var count = t.length();
-        for (char c : t.toCharArray()) {
-            if (arr[c - 'A'] == Integer.MIN_VALUE) arr[c - 'A'] = 0;
-            arr[c - 'A']++;
-        }
-        int l = -1;
+        if (t.length() > s.length()) return "";
+        var arr = new int[128];
+        for (char c : t.toCharArray()) arr[c]++;
         var str = "";
+        int l = 0, count = t.length();
         var chs = s.toCharArray();
         for (int i = 0; i < chs.length; i++) {
-            var c = chs[i];
-            if (arr[c - 'A'] == Integer.MIN_VALUE) continue;
-            if (l == -1) l = i;
-            arr[c - 'A']--;
-            if (arr[c - 'A'] >= 0) count--;
+            if (arr[chs[i]] > 0) count--;
+            arr[chs[i]]--;
             if (count == 0) {
-                if (str.isEmpty() || i - l + 1 < str.length()) str = s.substring(l, i + 1);
-                for (int j = l; j < i; j++) {
-                    c = chs[j];
-                    if (arr[c - 'A'] == Integer.MIN_VALUE) continue;
-                    if (arr[c - 'A'] + 1 > 0) {
-                        l = j;
+                while (l <= i) {
+                    if (arr[chs[l]] + 1 > 0) {
+                        str = str.isEmpty() || i - l + 1 < str.length() ? s.substring(l, i + 1) : str;
                         break;
-                    } else arr[c - 'A']++;
+                    } else arr[chs[l++]]++;
                 }
-                if (str.isEmpty() || i - l + 1 < str.length()) str = s.substring(l, i + 1);
+                arr[chs[l++]]++;
+                count++;
             }
-        }
-        if (count == 0) {
-            if (str.isEmpty() || s.length() - l < str.length()) return s.substring(l);
         }
         return str;
     }
