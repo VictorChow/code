@@ -7,10 +7,10 @@ import java.util.regex.Pattern;
 
 public class Util {
 
-    public static ListNode nodes(int... nodes) {
+    public static ListNode nodes(int... val) {
         var node = new ListNode();
         var tmp = node;
-        for (int i : nodes) {
+        for (int i : val) {
             var item = new ListNode(i);
             tmp.next = item;
             tmp = item;

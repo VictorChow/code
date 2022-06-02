@@ -1,6 +1,7 @@
 package me.victor.code;
 
-import java.util.List;
+import me.victor.code.util.ListNode;
+import me.victor.code.util.Util;
 
 /**
  * 给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次。
@@ -17,21 +18,9 @@ import java.util.List;
 public class T83_RemoveDuplicatesFromSortedList {
 
     public static void main(String[] args) {
-        var head1 = generateNodes(List.of(1, 1, 1));
-        var head2 = generateNodes(List.of(1, 1, 2, 3, 3));
-        System.out.println(original(head1));
-        System.out.println(original(head2));
-        System.out.println(original(new ListNode(1)));
-    }
-
-    private static ListNode generateNodes(List<Integer> nums) {
-        var head = new ListNode(nums.get(0));
-        var pre = head;
-        for (int i = 1; i < nums.size(); i++) {
-            pre.next = new ListNode(nums.get(i));
-            pre = pre.next;
-        }
-        return head;
+        var t = new T83_RemoveDuplicatesFromSortedList();
+        System.out.println(t.deleteDuplicates(Util.nodes(1, 1, 1)));
+        System.out.println(t.deleteDuplicates(Util.nodes(1, 1, 2, 3, 3)));
     }
 
     private static ListNode original(ListNode head) {
@@ -50,27 +39,15 @@ public class T83_RemoveDuplicatesFromSortedList {
         return find(node.next, preVal);
     }
 
-    private static ListNode official(ListNode head) {
-        var current = head;
-        while (current != null && current.next != null) {
-            if (current.next.val == current.val) {
-                current.next = current.next.next;
+    public ListNode deleteDuplicates(ListNode head) {
+        var tmp = head;
+        while (tmp != null && tmp.next != null) {
+            if (tmp.val == tmp.next.val) {
+                tmp.next = tmp.next.next;
             } else {
-                current = current.next;
+                tmp = tmp.next;
             }
         }
         return head;
-    }
-
-    private static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) { val = x; }
-
-        @Override
-        public String toString() {
-            return val + (next == null ? "" : "->" + next.toString());
-        }
     }
 }
