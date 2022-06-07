@@ -1,6 +1,7 @@
 package me.victor.code;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import me.victor.code.util.TreeNode;
@@ -16,57 +17,25 @@ class T95_UniqueBinarySearchTrees2 {
     }
 
     public List<TreeNode> generateTrees(int n) {
-        var ans = new ArrayList<TreeNode>();
-        var bool = new boolean[n + 1];
-        for (int i = 1; i <= n; i++) {
-            TreeNode h = new TreeNode(i);
-            bool[i] = true;
-            f(ans, h, h, i, n, 1, bool);
-            bool[i] = false;
-        }
-        return ans;
+        return generateTrees(1, n);
     }
 
-    private void f(List<TreeNode> ans, TreeNode head, TreeNode node, int x, int n, int count, boolean[] bool) {
-        if (count == n) {
-            ans.add(clone(head));
-            return;
+    public List<TreeNode> generateTrees(int l, int r) {
+        if (l > r) return Collections.singletonList(null);
+        var list = new ArrayList<TreeNode>();
+        for (int i = l; i <= r; i++) {
+            var left = generateTrees(l, i - 1);
+            var right = generateTrees(i + 1, r);
+            for (TreeNode lNode : left) {
+                for (TreeNode rNode : right) {
+                    var node = new TreeNode(i);
+                    node.left = lNode;
+                    node.right = rNode;
+                    list.add(node);
+                }
+            }
         }
-        if (x < 1 || x > n) return;
-        for (int i = 1; i < x; i++) {
-            if (bool[i]) continue;
-            node.left = new TreeNode(i);
-            bool[i] = true;
-            f(ans, head, node.left, i, x, count + 1, bool);
-            bool[i] = false;
-            node.left = null;
-        }
-        for (int j = x + 1; j <= n; j++) {
-            if (bool[j]) continue;
-            node.right = new TreeNode(j);
-            bool[j] = true;
-            f(ans, head, node.right, j, n, count + 1, bool);
-            bool[j] = false;
-            node.right = null;
-        }
-        //
-        //        for (int i = 1; i < x; i++) {
-        //            node.left = new TreeNode(i);
-        //            f(ans, head, node.left, i, n, count + 1);
-        //            for (int j = x + 1; j <= n; j++) {
-        //                node.right = new TreeNode(j);
-        //                f(ans, head, node.right, j, n, count + 2);
-        //                node.right = null;
-        //            }
-        //            node.left = null;
-        //        }
+        return list;
     }
 
-    private TreeNode clone(TreeNode head) {
-        if (head == null) return null;
-        TreeNode h = new TreeNode(head.val);
-        h.left = clone(head.left);
-        h.right = clone(head.right);
-        return h;
-    }
 }
